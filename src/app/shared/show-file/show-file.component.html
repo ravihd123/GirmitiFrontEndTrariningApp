@@ -1,0 +1,23 @@
+<div fxLayout="column" fxLayoutGap="10px">
+    <div fxLayoutAlign="end end">
+        <mat-icon matTooltip="Close" (click)="closeDialog()">
+            close
+        </mat-icon>
+    </div>
+    <div  *ngIf="videoFile">
+        <video controls >
+            <source [src]="dataFile" type="video/mp4" autoplay="true">
+            <p><i class="far fa-times-circle"></i> No Preview Available</p>
+        </video>
+    </div>
+    <div *ngIf="!videoFile">
+            <iframe  [src]="cleanURL()" frameborder="0" 
+            allowfullscreen width="800px" height="500px"></iframe>
+
+    </div>
+
+    <!-- <div>
+        <iframe src="../../../assets/test.pdf" style="width: 100%;height: 100%;border: none;"></iframe>
+    </div> -->
+
+</div>

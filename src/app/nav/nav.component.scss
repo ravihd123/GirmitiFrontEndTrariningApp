@@ -1,0 +1,50 @@
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover, a:active{
+    color: lightgray;
+}
+
+
+mat-toolbar{
+    border-radius: 3px;
+}
+
+
+main {
+    padding: 10px;
+}
+
+button {
+    box-sizing: inherit;
+    font: inherit;
+    margin: 0;
+    text-transform: none;
+    -webkit-appearance: button;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
+    border-radius: 8px;
+    border: 1px solid #ccc!important;
+    color: #000!important;
+    background-color: #fff!important;
+    border-color: #f44336!important;
+    flex-direction: row;box-sizing: border-box;display: flex;place-content: center;align-items: center;width: 79px;height: 40px;padding-top: 5px;margin-top: 13px;
+  }  
+
+  div.main {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    border: 3px solid #73AD21;
+  } 
+
+

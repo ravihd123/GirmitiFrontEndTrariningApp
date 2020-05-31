@@ -1,0 +1,19 @@
+<div *ngIf="!showAddQuestins" fxLayout="column" fxLayoutGap="10px">
+    <div>
+        <h2 fxLayoutAlign="start center">Question List for </h2>
+        <hr>
+    </div>
+    <div>
+        <app-mat-header [headerLabel]='headerLabel' [isAddBtnVisible]="true" (add)="addQuestions()">
+        </app-mat-header>
+        <app-custom-mat-table [tableConfiguration]='tableConfig' [tableData]='testtabledata'
+            (selectedRow)="selectedTableROw($event)"></app-custom-mat-table>
+    </div>
+    <div fxLayoutGap="10px">
+        <button fxLayoutAlign="end center"  mat-stroked-button color="accent" (click) = "closeDailogRef()">Cancel</button>
+    </div>
+</div>
+
+<ng-container *ngIf="showAddQuestins">
+    <app-add-question (backToQuestionList)="backToList()"></app-add-question>
+</ng-container>

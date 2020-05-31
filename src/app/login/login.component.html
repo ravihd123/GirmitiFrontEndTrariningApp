@@ -1,0 +1,54 @@
+<div fxLayoutAlign="center" class="wrapper">
+
+    <div id="formContent" fxLayout="column" fxLayoutGap="20px">
+        <div fxLayout="column">
+            <a href="http://www.girmiti.com/" class="logo pull-left"><img src="../assets/Girmiti.png"></a>
+            <mat-error *ngIf="!validLogin">
+                {{loginUiConfig.invalidCred}}
+            </mat-error>
+        </div>
+
+        <div fxLayout="column" fxLayoutGap="40px" style="padding: 10px;">
+
+            <form [formGroup]="loginForm" fxLayout="column" fxLayoutGap="50px" fxLayoutAlign="center center" >
+                <div fxLayoutGap="20px" fxLayout="column"  class="button-width">
+                    <mat-form-field>
+                        <mat-label fxLayoutAlign="center center">{{ loginUiConfig.username }}</mat-label>
+                        <input fxLayoutAlign="center" matInput formControlName="username" />
+                        <mat-error
+                            *ngIf="loginForm.get('username').invalid && (loginForm.get('username').dirty || loginForm.get('username').touched)">
+                            {{loginUiConfig.errorLabel}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label fxLayoutAlign="center center">{{loginUiConfig.password}}</mat-label>
+                        <input type="password" matInput placeholder="" formControlName="password">
+
+                        <mat-error
+                            *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                            {{loginUiConfig.errorLabel}}</mat-error>
+                    </mat-form-field>
+
+                </div>
+
+
+                <div fxLayoutGap="20px" fxLayout="column" class="button-width">
+                    <button type="submit" mat-raised-button color="primary" (click)='onSubmit()'
+                        [disabled]='loginForm.invalid'>
+                        {{loginUiConfig.submit}}</button>
+                    <button mat-stroked-button color="accent" matTooltip="Clear" (click)='ClearLogin()'>
+                        {{loginUiConfig.clearLabel}}</button>
+                </div>
+
+
+            </form>
+
+
+
+
+        </div>
+
+    </div>
+
+
+
+</div>

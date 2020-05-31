@@ -1,0 +1,14 @@
+<div fxLayoutGap="10px">
+
+    <form [formGroup]="addContentForm" fxLayoutGap="10px">
+        <mat-form-field>
+            <mat-label>{{addLabel}}</mat-label>
+            <input placeholder="{{addLabel}}" matInput formControlName="add" />
+            <mat-error>{{erroMessage}}</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="addContent()">Add</button>
+        <button mat-stroked-button color="accent" (click)="closeDailogRef()">Cancel</button>
+    </form>
+
+
+</div>

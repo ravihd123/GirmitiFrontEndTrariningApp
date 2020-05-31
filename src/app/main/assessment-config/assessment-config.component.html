@@ -1,0 +1,34 @@
+<div fxLayout='column'>
+  <div >
+    <h2 fxLayoutAlign="center">Assessment Configuration</h2>
+    <!-- <app-mat-header fxLayoutAlign="center"  [headerLabel]='headerLabel' [isAddBtnVisible]="false"></app-mat-header> -->
+  </div>
+  
+  <ng-container>
+    <div fxLayoutAlign="center">
+      <form [formGroup]="test_configform" fxLayoutAlign="center" fxLayout='column' fxLayoutGap="20px" fxFlex="20" >
+        <mat-form-field>
+          <mat-label>Number Of Questions</mat-label>
+          <input type="number" placeholder="Number of Question" formControlName="numberofquestion" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Number of Attempts</mat-label>
+          <input type="number" placeholder="Number of Attempts" formControlName="numberofattemts" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Total Marks</mat-label>
+          <input type="number" placeholder="Total Marks" formControlName="totalmarks" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Pass Marks</mat-label>
+          <input type="number" placeholder="Pass Marks" formControlName="passmarks" matInput>
+        </mat-form-field>
+        <div fxLayoutAlign="center">
+          <button type="submit" class="button-margin" mat-raised-button color="primary" (click)="updateAssignmentConfigration()">Update</button>
+        </div>
+        
+      </form>   
+    </div>  
+    </ng-container>
+
+</div>

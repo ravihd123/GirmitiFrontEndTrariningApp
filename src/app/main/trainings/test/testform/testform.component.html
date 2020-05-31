@@ -1,0 +1,84 @@
+<form [formGroup]="testForm">
+    <div fxLayoutAlign="center center">
+        <h2 *ngIf="!isEdit" fxLayoutAlign="center center">{{TestformUiConfig.heading}}</h2>
+        <h2 *ngIf="isEdit" fxLayoutAlign="center center">{{ValidformUiConfig.edittestheading}}</h2>
+
+    </div>
+    <hr>
+    <div fxLayout="column">
+
+        <div fxLayout="column">
+            <mat-form-field>
+                <mat-label>{{TestformUiConfig.testname}}</mat-label>
+                <input type="text" required placeholder="Test Name" formControlName="testname" matInput>
+                <mat-error
+                    *ngIf="(testForm.get('testname').invalid && (testForm.get('testname').dirty || testForm.get('testname').touched ))&& !testNameExists">
+                    {{ValidformUiConfig.testnamevalid}}</mat-error>
+                    <mat-error *ngIf="testForm.get('testname').invalid && testNameExists">{{errorMessage}}</mat-error>
+
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{TestformUiConfig.difficultylevel}}</mat-label>
+                <mat-select required formControlName="difficultylevel">
+                    <mat-option value="{{options.value}}" *ngFor='let options of difficultylevelOptions '>
+                        {{options.value}}</mat-option>
+                </mat-select>
+                <mat-error
+                    *ngIf="testForm.get('difficultylevel').invalid &&(testForm.get('difficultylevel').dirty||testForm.get('difficultylevel').touched)">
+                    {{ValidformUiConfig.difficultylevelvalid}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>{{TestformUiConfig.totalmarks}}</mat-label>
+                <input type="number" required placeholder="Total Marks" formControlName="totalmarks" matInput>
+                <mat-error
+                    *ngIf="testForm.get('totalmarks').invalid &&(testForm.get('totalmarks').dirty||testForm.get('totalmarks').touched)">
+                    {{ValidformUiConfig.totalmarksvalid}}</mat-error>
+
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{TestformUiConfig.pass}}</mat-label>
+                <input type="number" required placeholder="Pass Marks" formControlName="pass" matInput>
+                <mat-error
+                    *ngIf="testForm.get('pass').invalid &&(testForm.get('pass').dirty||testForm.get('pass').touched)">
+                    {{ValidformUiConfig.passvalid}}</mat-error>
+
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{TestformUiConfig.numberofque}}</mat-label>
+                <input required type="number" placeholder="Number of Questions" formControlName="numberofque" matInput>
+                <mat-error
+                    *ngIf="testForm.get('numberofque').invalid &&(testForm.get('numberofque').dirty||testForm.get('numberofque').touched)">
+                    {{ValidformUiConfig.numberofquevalid}}</mat-error>
+
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{TestformUiConfig.attempts}}</mat-label>
+                <input required type="number" placeholder="Number of Attempts" formControlName="attempts" matInput>
+                <mat-error
+                    *ngIf="testForm.get('attempts').invalid &&(testForm.get('attempts').dirty||testForm.get('attempts').touched)">
+                    {{ValidformUiConfig.attemptsvalid}}</mat-error>
+
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{TestformUiConfig.status}}</mat-label>
+                <mat-select required formControlName="status" >
+                    <mat-option value="{{options.value}}" *ngFor='let options of status ' selected='true'>
+                        {{options.value}}</mat-option>
+                </mat-select>
+                <mat-error
+                    *ngIf="testForm.get('status').invalid &&(testForm.get('status').dirty||testForm.get('status').touched)">
+                    {{ValidformUiConfig.statusvalid}}</mat-error>
+
+            </mat-form-field>
+        </div>
+        <div fxLayoutGap="10px" fxLayoutAlign="end end">
+            <button mat-stroked-button color="accent" (click)="closeDialog()">{{TestformUiConfig.clear}}</button>
+            <button *ngIf="!isEdit" type="submit" [disabled]="!testForm.valid" mat-raised-button color="primary"
+                (click)="onSubmit()">{{TestformUiConfig.save}}</button>
+            <button *ngIf="isEdit" [disabled]="!testForm.valid" type="submit"  mat-raised-button color="primary"
+                (click)="onSubmit()">{{TestformUiConfig.update}}</button>
+
+        </div>
+    </div>
+</form>

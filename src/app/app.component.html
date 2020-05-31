@@ -1,0 +1,12 @@
+<app-nav *ngIf="showAfterLog()"></app-nav>
+
+
+
+
+
+<router-outlet>
+    <div class="spinner">
+        <mat-spinner color="accent" mode="indeterminate" *ngIf="spinnerService.visibility | async">
+        </mat-spinner>
+    </div>
+</router-outlet>

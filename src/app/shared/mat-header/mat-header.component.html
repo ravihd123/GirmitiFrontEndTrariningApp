@@ -1,0 +1,15 @@
+<div class="header-padding-15" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+
+    <h2 fxFlex="50" *ngIf="alignStart" fxLayoutAlign="start">{{headerLabel}}</h2>
+    <h2 fxFlex="50" *ngIf="!alignStart" fxLayoutAlign="end">{{headerLabel}}</h2>
+    <div fxLayout="row" fxFlex="60" fxLayoutGap="10px" fxLayoutAlign="end">
+        <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end center" *ngIf="isAddBtnVisible">
+            <button type="button" mat-mini-fab color="primary" (click)="addClick()">
+                <mat-icon>
+                    add
+                </mat-icon>
+
+            </button>
+        </div>
+    </div>
+</div>

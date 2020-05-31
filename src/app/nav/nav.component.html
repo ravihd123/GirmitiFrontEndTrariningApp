@@ -1,0 +1,12 @@
+<div fxLayout="row">
+    <a href="http://www.girmiti.com/" class="logo pull-left" fxFlex='95'><img src="../../assets/Girmiti.png"></a>
+    <button (click)="logout()" fxLayout="row" fxLayoutAlign="center center">Logout</button>
+</div>
+
+<mat-toolbar color="primary">
+    <nav mat-tab-nav-bar>
+        <div fxLayoutGap="10px">
+            <a  mat-tab-link  *ngFor="let navItem of navItems" [routerLink]="navItem.path" >{{navItem.value}} </a>
+        </div>
+    </nav>
+</mat-toolbar>

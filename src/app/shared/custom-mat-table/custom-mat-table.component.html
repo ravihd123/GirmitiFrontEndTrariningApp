@@ -1,0 +1,69 @@
+<div fxLayout="column" fxLayoutGap="10px">
+
+    <mat-table [dataSource]="dataSource" matSort matSortDisableClear>
+
+        <ng-container *ngFor="let columnInfo of this.tableConfig?.columnInfo">
+            <ng-container [matColumnDef]="columnInfo.ObjName" *ngIf="columnInfo.columnType == 'text'">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                    {{columnInfo.headerText}}</mat-header-cell>
+                <mat-cell *matCellDef="let row;">
+                    <div [matTooltip]="row[columnInfo.ObjName]" (click)="onRowClicked(row)">
+                        {{row[columnInfo.ObjName]}}
+                    </div>
+                </mat-cell>
+
+
+            </ng-container>
+
+            <ng-container [matColumnDef]="columnInfo.ObjName" *ngIf="columnInfo.columnType == 'button'">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                    {{columnInfo.headerText}}</mat-header-cell>
+                <mat-cell *matCellDef="let row;">
+                    <div [matTooltip]="row[columnInfo.ObjName]" (click)="buttonClick(row)">
+                        <mat-icon *ngIf="checkIfvideoFile(row)">play_circle_outline</mat-icon>
+                        <mat-icon *ngIf="checkIfimageFile(row)">picture_as_pdf</mat-icon>
+                        <mat-icon *ngIf="checkIfpdfFile(row)">image</mat-icon>
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container [matColumnDef]="columnInfo.ObjName" *ngIf="columnInfo.columnType == 'addbutton'">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                    {{columnInfo.headerText}}</mat-header-cell>
+                <mat-cell *matCellDef="let row;">
+                    <div [matTooltip]="row[columnInfo.ObjName]" (click)="addbuttonClick(row)">
+                        <button mat-button>Add Questions</button>
+                    </div>
+                </mat-cell>
+
+            </ng-container>
+
+            <ng-container [matColumnDef]="columnInfo.ObjName" *ngIf="columnInfo.columnType === 'drop-down'">
+                <mat-header-cell *matHeaderCellDef>
+                    {{columnInfo.headerText}}</mat-header-cell>
+                <mat-cell *matCellDef="let row;">
+
+                    <ng-container *ngFor="let option of columnInfo.dropDownOptions;let optionIndex=index;">
+                        <mat-icon [matTooltip]="option.value" *ngIf="option.value == 'Edit'" aria-hidden="false"
+                            aria-label="Example home icon" (click)="selectedOption(row, 'Edit')">
+                            edit</mat-icon>
+                        <mat-icon [matTooltip]="option.value" *ngIf="option.value == 'Delete'" aria-hidden="false"
+                            aria-label="Example home icon" (click)="selectedOption(row, 'Delete')">
+                            delete</mat-icon>
+                    </ng-container>
+                </mat-cell>
+            </ng-container>
+
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="this.tableConfig?.displayedColumns">
+        </mat-header-row>
+
+        <mat-row *matRowDef="let row; columns:this.tableConfig?.displayedColumns;let rowIndex = index; "></mat-row>
+
+    </mat-table>
+
+
+
+
+</div>

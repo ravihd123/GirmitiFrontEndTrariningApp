@@ -1,0 +1,22 @@
+<div class="main" fxLayout="column" fxLayoutGap="20px">
+
+
+    <div *ngIf="showTrainingTab">
+        <app-mat-header [headerLabel]='headerLabel' [isAddBtnVisible]="isAdmin=='true'" (add)="addTraining()"></app-mat-header>
+        <app-custom-mat-table [tableConfiguration]='tableConfig' [tableData]='tableData'
+            (selectedRow)="selectedTableROw($event)" (selectedOpt)="selectedOption($event)">
+        </app-custom-mat-table>
+    </div>
+
+
+    <div *ngIf="!showTrainingTab">
+        <mat-tab-group>
+            <mat-tab label="Content">
+                <app-content [headerContent]="contentHeader"></app-content>>
+            </mat-tab>
+            <mat-tab label="Test" *ngIf="isAdmin=='true'">
+                <app-display-tests  [trainingIdfromlist]="reqtrainingid"></app-display-tests>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

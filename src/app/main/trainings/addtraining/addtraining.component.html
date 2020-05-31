@@ -1,0 +1,76 @@
+<div>
+    <ng-container>
+        <h3 fxLayoutAlign="center center">{{headerlabel}}</h3>
+        <hr>
+    </ng-container>
+    <ng-container>
+        <form fxLayout="column" [formGroup]="trainingForm" fxLayoutGap="10px">
+            <mat-form-field class="form-element">
+                <mat-label>{{addTrainingUiConfig.trainingName}}</mat-label>
+                <input matInput placeholder="Training Name" formControlName="trainingname">
+                <mat-error *ngIf="hasError('trainingname', 'required')">Name is required</mat-error>
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutGap="10px">
+                <div fxLayout="column" fxFlex="90">
+                    <mat-form-field>
+                        <mat-label>{{addTrainingUiConfig.category}}</mat-label>
+                        <mat-select formControlName="category" placeholder="Category"
+                            (selectionChange)="selectedCategory(($event))">
+                            <ng-container *ngFor="let category of categories">
+                                <mat-option [value]="category">{{category.categoryName}}</mat-option>
+
+                            </ng-container>
+                        </mat-select>
+                        <mat-error *ngIf="hasError('category', 'required')">category is required</mat-error>
+                        <!-- <mat-error *ngIf="categoryError">Category name exists</mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div fxLayoutAlign="end center">
+                    <button type="button" mat-mini-fab color="primary" (click)="addCategory()">
+                        <mat-icon>
+                            add
+                        </mat-icon>
+
+                    </button>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="10px">
+                <div fxLayout="column" fxFlex="90">
+                    <mat-form-field>
+                        <mat-label>{{addTrainingUiConfig.subCategory}}</mat-label>
+                        <mat-select formControlName="subcategory" placeholder="">
+                            <ng-container *ngFor="let subcategory of subcategory">
+                                <mat-option [value]="subcategory">{{subcategory.subCategoryName}}</mat-option>
+
+                            </ng-container>
+                        </mat-select>
+                        <mat-error *ngIf="hasError('subcategory', 'required')">subcategory is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayoutAlign="end center">
+                    <button type="button" mat-mini-fab color="primary" [disabled]="!buttonDisabled"  (click)="addSubCategory()">
+                        <mat-icon>
+                            add
+                        </mat-icon>
+                    </button>
+                </div>
+            </div>
+
+            <mat-form-field>
+                <mat-select formControlName="status" placeholder="Status">
+                    <ng-container *ngFor="let status of option">
+                        <mat-option [value]="status">{{status}}</mat-option>
+                    </ng-container>
+                </mat-select>
+                <mat-error *ngIf="hasError('status', 'required')">status is required</mat-error>
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end end">
+                <button mat-stroked-button color="accent" (click)='Clear()'>{{cancelbtnlabel}}</button>
+                <button mat-raised-button color="primary" [disabled]="!trainingForm.valid" (click)='onSave()'>
+                    {{savebtnlabel}}</button>
+            </div>
+        </form>
+
+    </ng-container>
+
+</div>

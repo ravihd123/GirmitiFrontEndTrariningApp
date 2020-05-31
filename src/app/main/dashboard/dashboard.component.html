@@ -1,0 +1,23 @@
+<div fxLayout="column">
+    <div class="chart-container" style="position: relative; height:40vh; width:97vw">
+        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+            [legend]="barChartLegend" [chartType]="barChartType1">
+        </canvas>
+
+    </div>
+    <div fxLayout="row" fxLayoutGap="30px">
+        <div class="chart-container" style="position: relative; height:40vh; width:48vw">
+            <canvas baseChart [datasets]="lineChartData" [labels]="barChartLabels" [options]="lineChartOptions"
+                [legend]="barChartLegend" [chartType]="barChartType2">
+            </canvas>
+
+        </div>
+        <div class="chart-container" style="position: relative; height:40vh; width:48vw">
+            <canvas baseChart [datasets]="piaChartData" [labels]="barChartLabels" [options]="piaChartOptions"
+                [legend]="barChartLegend" [chartType]="barChartType3">
+            </canvas>
+
+        </div>
+    </div>
+
+</div>

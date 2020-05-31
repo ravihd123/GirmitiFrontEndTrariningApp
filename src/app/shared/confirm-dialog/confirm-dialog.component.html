@@ -1,0 +1,14 @@
+<div fxLayout="column" fxLayoutGap="10px">
+    <div fxFlex="75">
+        <h3 fxLayoutAlign="center center"> {{title}}</h3>
+        <hr>
+    </div>
+    <mat-dialog-content>
+        {{confirmMessage}}
+    </mat-dialog-content>
+    <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
+        <button tabindex="-1" mat-raised-button color="primary" matTooltip="No" (click)="dailogClick('No')">No</button>
+        <button tabindex="-1" mat-stroked-button color="primary" matTooltip="Yes"
+            (click)="dailogClick('Yes')">Yes</button>
+    </div>
+</div>

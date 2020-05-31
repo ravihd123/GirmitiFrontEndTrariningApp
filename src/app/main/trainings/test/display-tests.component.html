@@ -1,0 +1,2 @@
+<app-mat-header [headerLabel]='headerLabel' [isAddBtnVisible] = "true"  [alignHeader]="alignHeader" (add)="addtest()"></app-mat-header>
+<app-custom-mat-table [tableConfiguration] = 'tableConfig' [tableData] = 'testtabledata' (selectedOpt)="selectedOption($event)"  (add)="selectedTableROw($event)"></app-custom-mat-table>

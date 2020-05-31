@@ -1,0 +1,56 @@
+<!-- <h2>{{headerToggle ? 'Add':'Edit'}} Content</h2> -->
+<div fxLayoutAlign="center center">
+  <h2 *ngIf="!isEdit" fxLayoutAlign="center center">{{contentFormUIconfg.heading}}</h2>
+  <h2 *ngIf="isEdit" fxLayoutAlign="center center">{{contentFormUIconfg.editheading}}</h2>
+
+</div>
+<hr>
+  <form [formGroup]="contentForm">
+    <div fxLayout="column" fxLayoutGap="20px">
+      <div fxLayout="column">
+        <mat-form-field>
+          <mat-label>{{contentFormUIconfg.contentname}}</mat-label>
+          <input matInput formControlName="name">
+          <mat-error *ngIf="!contentForm.get('name').valid && contentForm.get('name').touched">Content name is mandatory
+          </mat-error>
+        </mat-form-field>
+        
+        <mat-form-field>
+          <mat-label>{{contentFormUIconfg.contentdescription}}</mat-label>
+          <input matInput formControlName="description">
+          <mat-error *ngIf="!contentForm.get('description').valid && contentForm.get('description').touched">Content
+            description is mandatory</mat-error>
+        </mat-form-field>
+        
+        <!-- <mat-form-field>
+          <mat-label>Content Type</mat-label>
+          <mat-select formControlName="type">
+            <mat-option *ngFor="let cont_type of contentType" value="{{cont_type}}">{{cont_type}}</mat-option>
+          </mat-select>
+        </mat-form-field> -->
+        
+        <mat-form-field>
+          <mat-label>{{contentFormUIconfg.contentfile}}</mat-label>
+          <input matInput style="visibility: hidden">
+          <input type="file" formControlName="content" (change)="uploadFile($event)">
+          <mat-error *ngIf="!contentForm.get('content').valid && contentForm.get('content').touched">Please upload file
+          </mat-error>
+        </mat-form-field>
+        
+        <mat-form-field>
+          <mat-label>{{contentFormUIconfg.contentstatus}}</mat-label>
+          <mat-select formControlName="status">
+            <mat-option value="{{status.value}}" *ngFor="let status of contentStatus">{{status.value}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="5px">
+          <button mat-stroked-button color="accent" type="reset" (click)="closeContentForm()">{{contentFormUIconfg.cancel}}</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!contentForm.valid"
+            (click)="contentSubmit()">{{contentFormUIconfg.save}}</button>
+      </div>
+        </div>
+      </form>
+
+      
+    

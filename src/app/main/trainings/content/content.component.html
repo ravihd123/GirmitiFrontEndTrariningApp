@@ -1,0 +1,4 @@
+<app-mat-header [headerLabel]='contentHeader' [isAddBtnVisible]="isAdmin=='true'" [alignHeader]="alignHeader" (add)="addContent()">
+</app-mat-header>
+<app-custom-mat-table [tableConfiguration]='contentConfig' [tableData]='contentData' (buttonClicked)="buttonClicked($event)"
+  (selectedOpt)="edit_delSelectedContent($event)"></app-custom-mat-table>
